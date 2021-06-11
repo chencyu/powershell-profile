@@ -44,7 +44,8 @@ function Edit-Profile
         return
     }
 
-    code (Split-Path -Parent (Get-Item $Profile).Target)
+    # code (Split-Path -Parent (Get-Item $Profile).Target)
+    code (Split-Path -Parent (Get-Item $Profile))
     return
 }
 
