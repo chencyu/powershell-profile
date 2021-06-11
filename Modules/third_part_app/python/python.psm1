@@ -35,6 +35,19 @@ function jupyterkernel
 
 
 #region     [Venv]
+
+function EnvNameAutoCompletion()
+{
+    $EnvBlock = `
+    {
+        param($commandName, $parameterName)
+        Get-ChildItem -Path "$VenvSet/" | Select-Object -ExpandProperty Name
+    }
+    Register-ArgumentCompleter -CommandName venv -ParameterName activate -ScriptBlock $EnvBlock
+    Register-ArgumentCompleter -CommandName venv -ParameterName remove -ScriptBlock $EnvBlock
+    Register-ArgumentCompleter -CommandName venv -ParameterName upgrade -ScriptBlock $EnvBlock
+}
+
 function IsVenv($EnvName)
 {
     if (Test-Path "$VenvSet/$EnvName")
@@ -131,29 +144,29 @@ function venv
         Date:   July 09, 2020    
     #>
 
-    [CmdletBinding(DefaultParameterSetName = "General")]
+    [CmdletBinding()]
     param
     (
-        [Parameter()]
+        [Parameter(Position = 0)]
         [Alias("cr")]
-        [Switch] $create = $false,
-        [Parameter()]
+        [String] $create,
+        [Parameter(Position = 0)]
         [Alias("U")]
-        [Switch] $upgrade = $false,
-        [Parameter()]
-        [Alias("delete", "del")]
-        [Switch] $remove = $false,
-        [Parameter()]
+        [String] $upgrade,
+        [Parameter(Position = 0)]
+        [Alias("delete", "del", "rm")]
+        [String] $remove,
+        [Parameter(Position = 0)]
         [Alias("ls")]
         [Switch] $list = $false,
-        [Parameter()]
+        [Parameter(Position = 0)]
         [Alias("act")]
-        [Switch] $activate = $false,
-        [Parameter()]
+        [String] $activate,
+        [Parameter(Position = 0)]
         [Alias("help")]
         [Switch] $h = $false,
-        [Parameter(Position = 1)]
-        [String] $EnvName,
+        # [Parameter(Position = 1)]
+        # [String] $EnvName,
         [Parameter()]
         [Alias("Py")]
         [String] $PyVer
@@ -167,12 +180,12 @@ function venv
             " _________________________________________________________"`
             "| [Venv - Easy way to use Python venv]                    |"`
             "|---------------------------------------------------------|"`
-            "|  venv  <operation>        <Py_ver>           <envName>  |"`
-            "|          -create       -py <3.7/3.8 ...>       newEnv   |"`
-            "|          -upgrade      -py <3.7/3.8 ...>        myEnv   |"`
-            "|          -remove                                myEnv   |"`
+            "|  venv  <operation>     <envName>           <Py_ver>     |"`
+            "|          -create        newEnv        -py <3.7/3.8 ...> |"`
+            "|          -upgrade        myEnv        -py <3.7/3.8 ...> |"`
+            "|          -remove         myEnv                          |"`
             "|           -list                                         |"`
-            "|         -activate                               myEnv   |"`
+            "|         -activate        myEnv                          |"`
             "|             -h                                          |"`
             "|  ex.                                                    |"`
             "|      venv create -py 3.7 newEnvName                     |"`
@@ -193,6 +206,7 @@ function venv
     
     if ($create)
     {
+        $EnvName = $create
         if (IsVenv $EnvName)
         {
             Write-Output "EnvName: $EnvName"
@@ -204,10 +218,12 @@ function venv
         # SetIniScript "$EnvName"
         pipinit "$EnvName"
         deactivate
+        # EnvNameAutoCompletion
         return
     }
     if ($upgrade)
     {
+        $EnvName = $upgrade
         if (-Not (IsVenv "$EnvName"))
         {
             hint_venv_not_exist
@@ -218,7 +234,9 @@ function venv
     }
     if ($remove)
     {
+        $EnvName = $remove
         Remove-Item -r "$VenvSet/$EnvName"
+        # EnvNameAutoCompletion
         return
     }
     if ($list)
@@ -228,6 +246,7 @@ function venv
     }
     if ($activate)
     {
+        $EnvName = $activate
         if (-Not "$EnvName")
         {
             Write-Output "" "請提供虛擬環境專案名稱" ""
@@ -260,9 +279,10 @@ function venv
 
 }
 
+EnvNameAutoCompletion
+
 #endregion  [Venv]
 
 # This must be end of modules
 Export-ModuleMember -Variable Env
-Export-ModuleMember -Function jupyterkernel
-Export-ModuleMember -Function venv
+Export-ModuleMember -Function venv, jupyterkernel, EnvNameAutoCompletion
