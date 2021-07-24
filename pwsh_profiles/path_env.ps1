@@ -4,7 +4,7 @@
     "C:\Program Files\WinRAR",
     "C:\Program Files\7-Zip",
     "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
-    "C:\Program Files\mingw-w64\posix\mingw64\bin",
+    "C:\Program Files\mingw-w64\win32\mingw64\bin",
     "C:\Program Files (x86)\sox",
     "$HOME\bin"
 )

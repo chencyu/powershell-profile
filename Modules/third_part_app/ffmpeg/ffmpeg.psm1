@@ -50,7 +50,7 @@ function Cut-Video
     $EndTime = [System.DateTime]$End
     $DiffTime = $EndTime.Subtract($StartTime)
     
-    ffmpeg -ss "$Start" -hwaccel nvdec -i $InputFile -t "$DiffTime" -avoid_negative_ts make_zero -c:v hevc_nvenc -x265-params lossless=1 $OutFile
+    ffmpeg -ss "$Start" -i $InputFile -t "$DiffTime" -avoid_negative_ts make_zero -c copy "$OutFile"
 }
 
 

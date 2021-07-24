@@ -43,6 +43,11 @@ function whereis($SearchedCMD)
     }
 }
 
+function env
+{
+    Get-Item -Path "Env:"
+}
+
 function vim
 {
     wsl vim $args
