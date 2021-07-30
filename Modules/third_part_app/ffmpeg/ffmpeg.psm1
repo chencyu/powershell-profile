@@ -69,26 +69,36 @@ function Cat-Video
         $OutFile
     )
 
+    $txtList = "$Env:TMP\concatenate_video.tmp"
+
 
     if ($List.Count -lt 2)
     {
         Write-Error -Message "Please provide at least 2 video to concatenate."
+        return
     }
 
 
-    Write-Output "" > "$Env:TMP\concatenate_video.tmp"
-    for ($i = 0; $i -lt $List.Count; $i++)
+    touch $txtList
+    # for ($i = 0; $i -lt $List.Count; $i++)
+    for ($Video -in $List)
     {
         $Video = (Resolve-Path -Path "$($List[$i])")
-        Write-Output "file '$Video'" >> "$Env:TMP\concatenate_video.tmp"
+        Write-Output "file '$Video'" >> $txtList
     }
-    ffmpeg -f concat -safe 0 -i "$Env:TMP\concatenate_video.tmp" -c copy "$OutFile"
+    ffmpeg -f concat -safe 0 -i $txtList -c copy "$OutFile"
+    Remove-Item -Path $txtList
 }
 
 
 function Update-FFmpeg
 {
-    Invoke-WebRequest -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z" -OutFile ""
+    $OldProgressPreference = $ProgressPreference
+    $ProgressPreference = 'SilentlyContinue'
+    Invoke-WebRequest -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z" -OutFile "$Env:TMP/ffmpeg.7z"
+    7z e "$Env:TMP/ffmpeg.7z" -o"$HOME/bin" *.exe -r -y
+    $ProgressPreference = $OldProgressPreference
+    Remove-Item -Path "$Env:TMP/ffmpeg.7z"
 }
 
 # This must be end of modules
