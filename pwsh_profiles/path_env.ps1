@@ -5,7 +5,7 @@
     "C:\Program Files\7-Zip",
     "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
     "C:\Program Files (x86)\sox",
-    "$HOME\.app\mingw-w64\posix\mingw64\bin\mingw-w64\win32\mingw64\bin",
+    "$HOME\.app\mingw-w64\posix\mingw64\bin",
     "$HOME\bin"
 )
 
