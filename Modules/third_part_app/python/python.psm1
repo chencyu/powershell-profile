@@ -10,27 +10,35 @@ function jupyterkernel
         [Parameter(Position = 0)]
         [switch]
         $Install,
+        [Alias("Del", "Delete")]
         [Parameter(Position = 0)]
         [switch]
         $Remove,
+        [Alias("ls")]
         [Parameter(Position = 0)]
         [switch]
-        $List,
-        [Parameter(Position = 1)]
-        [string]
-        $Name
+        $List
     )
+
     if ($Install)
     {
         if (Test-Path env:VIRTUAL_ENV)
         {
-            python -m ipykernel install --name "$Name" --user
+            python -m ipykernel install --name "$_PYTHON_VENV_PROMPT_PREFIX" --user
+            return 0
         }
+        Write-Output "Please install ipykernel only in virtual environment."
+        return 1
     }
-    elseif ($Remove)
-    { jupyter kernelspec remove "$Name" }
-    elseif ($List)
-    { jupyter kernelspec list }
+    if ($Remove)
+    {
+        jupyter kernelspec remove "$_PYTHON_VENV_PROMPT_PREFIX"
+        return 0
+    }
+    if ($List)
+    {
+        jupyter kernelspec list
+    }
 }
 
 
