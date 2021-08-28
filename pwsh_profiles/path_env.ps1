@@ -27,13 +27,16 @@ function Add-Path
 
 # 設置額外的路徑到環境變數Path，避免Registry中的Path超過2048字元
 
-$ENV:INITIAL_Path = $Env:PATH
-
-foreach ($path in $path_set)
+if (-Not $_ORIGINAL_PATH)
 {
-    Add-Path -NewPath $path
+    $_ORIGINAL_PATH = $Env:PATH
+
+
+    foreach ($path in $path_set)
+    {
+        Add-Path -NewPath $path
+    }
+    
+    # 加入當前路徑使當前資料夾下的執行檔可以直接執行
+    Add-Path -NewPath "."
 }
-
-# 加入當前路徑使當前資料夾下的執行檔可以直接執行
-Add-Path -NewPath "."
-
