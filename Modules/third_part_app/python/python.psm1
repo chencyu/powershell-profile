@@ -44,16 +44,12 @@ function jupyterkernel
 
 #region     [Venv]
 
-function EnvNameAutoCompletion()
+Class EnvNames : System.Management.Automation.IValidateSetValuesGenerator
 {
-    $EnvBlock = `
+    [string[]] GetValidValues()
     {
-        param($commandName, $parameterName)
-        Get-ChildItem -Path "$VenvSet/" | Select-Object -ExpandProperty Name
+        return (Get-ChildItem -Path "$Script:VenvSet").Name
     }
-    Register-ArgumentCompleter -CommandName venv -ParameterName activate -ScriptBlock $EnvBlock
-    Register-ArgumentCompleter -CommandName venv -ParameterName remove -ScriptBlock $EnvBlock
-    Register-ArgumentCompleter -CommandName venv -ParameterName upgrade -ScriptBlock $EnvBlock
 }
 
 function IsVenv($EnvName)
@@ -160,15 +156,18 @@ function venv
         [String] $create,
         [Parameter(Position = 0)]
         [Alias("U")]
+        [ValidateSet([EnvNames])]
         [String] $upgrade,
         [Parameter(Position = 0)]
         [Alias("delete", "del", "rm")]
+        [ValidateSet([EnvNames])]
         [String] $remove,
         [Parameter(Position = 0)]
         [Alias("ls")]
         [Switch] $list = $false,
         [Parameter(Position = 0)]
         [Alias("act")]
+        [ValidateSet([EnvNames])]
         [String] $activate,
         [Parameter(Position = 0)]
         [Alias("help")]
@@ -287,10 +286,9 @@ function venv
 
 }
 
-EnvNameAutoCompletion
 
 #endregion  [Venv]
 
 # This must be end of modules
 Export-ModuleMember -Variable Env
-Export-ModuleMember -Function venv, jupyterkernel, EnvNameAutoCompletion
+Export-ModuleMember -Function venv, jupyterkernel
