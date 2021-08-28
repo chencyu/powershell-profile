@@ -11,8 +11,6 @@
 # 上面兩行都執行，下面這行就不用
 # mode con cp select=65001 | Out-Null
 
-$Env:USER = $Env:USERNAME
-$Env:HOSTNAME = $Env:COMPUTERNAME
 $ProfileRoot = "$HOME\Documents\PowerShell"
 
 #region 檢測當前用戶是否為root/admin

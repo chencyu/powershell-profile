@@ -1,1 +1,3 @@
-﻿$PROJECTS = "D:\projects"
+﻿$USER = $Env:USERNAME
+$HOSTNAME = $Env:COMPUTERNAME
+$PROJECTS = "D:\projects"
