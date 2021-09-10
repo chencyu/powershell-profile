@@ -1,1 +1,1 @@
-﻿Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
+﻿Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit
