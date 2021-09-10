@@ -61,7 +61,7 @@ function Cat-Video
     (
         [Alias("l")]
         [Parameter(Mandatory, Position = 0)]
-        [array]
+        [String[]]
         $List,
         [Alias("o")]
         [Parameter(Mandatory, Position = 1)]
@@ -80,10 +80,9 @@ function Cat-Video
 
 
     touch $txtList
-    # for ($i = 0; $i -lt $List.Count; $i++)
-    for ($Video -in $List)
+    foreach ($Video in $List)
     {
-        $Video = (Resolve-Path -Path "$($List[$i])")
+        $Video = (Resolve-Path -Path "$Video")
         Write-Output "file '$Video'" >> $txtList
     }
     ffmpeg -f concat -safe 0 -i $txtList -c copy "$OutFile"
