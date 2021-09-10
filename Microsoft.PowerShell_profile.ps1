@@ -47,6 +47,12 @@ function Edit-Profile
     return
 }
 
+function re-pwsh
+{
+    Start-Process -FilePath 'pwsh.exe' -ArgumentList ('-WorkingDirectory', "$PWD")
+    Exit
+}
+
 # 從Lib中逐個資料夾，逐個載入腳本
 Get-ChildItem -Path "${ProfileRoot}/pwsh_profiles" | ForEach-Object -Process {
     if ($_.Extension -eq ".ps1") { . "$_" }
