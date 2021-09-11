@@ -50,7 +50,22 @@ function env
 
 function vim
 {
-    wsl vim $args
+    winget install vim
+    if (-Not (Test-Path -Path "$HOME/.vim_runtime"))
+    {
+        git clone --depth=1 "https://github.com/amix/vimrc.git" "$HOME/.vim_runtime"
+        Write-Output "set nu" >> "$HOME/.vim_runtime/my_configs.vim"
+        Write-Output "set mouse=a" >> "$HOME/.vim_runtime/my_configs.vim"
+    }
+    vim $args
+}
+
+function git
+{
+    winget install git
+    git config --global user.email "chencyu.code@gmail.com"
+    git config --global user.name "chencyu"
+    git config --global core.autocrlf false
 }
 
 function touch
