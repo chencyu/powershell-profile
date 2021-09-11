@@ -10,6 +10,7 @@ Some feature maybe not work on PowerShell 5.1 (Win10 default powershell)
 
 ```PowerShell
 git clone "git@github.com:chencyu/powershell-profile.git" "$HOME\Documents\PowerShell"
+& "$HOME\Documents\PowerShell\configure.ps1"
 # enjoy!
 ```
 
@@ -24,5 +25,6 @@ and
 
 ```PowerShell
 git clone "git@github.com:chencyu/powershell-profile.git" "$HOME\Documents\PowerShell"
+& "$HOME\Documents\PowerShell\configure.ps1"
 # enjoy!
 ```
