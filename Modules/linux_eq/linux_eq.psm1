@@ -18,6 +18,8 @@ function cdls
 
 function whereis($SearchedCMD)
 {
+    $CMDPATH = (where.exe $SearchedCMD)
+    if ($CMDPATH) { return $CMDPATH }
     $CMDinfo = (Get-Command $SearchedCMD)
     switch ($CMDinfo.CommandType)
     {
