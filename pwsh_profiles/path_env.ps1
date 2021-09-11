@@ -6,6 +6,7 @@
     "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
     "C:\Program Files (x86)\sox",
     "C:\Program Files\Vim\vim82",
+    "C:\Program Files\Git\cmd",
     "$HOME\.app\mingw-w64\posix\mingw64\bin",
     "$HOME\bin"
 )
