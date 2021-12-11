@@ -87,18 +87,6 @@ function list_env
     }
 }
 
-function SetIniScript($EnvName)
-{
-    $IniContent = `
-    @(
-        'python -m pip install -U pip'
-        'pip install -U setuptools'
-        'pip install -U wheel'
-        'Remove-Item -Path "$PSCommandPath"'
-    ) -join "`r`n"
-    Set-Content -Value $IniContent -PaTh "$VenvSet/$EnvName/Scripts/pipinit.ps1"
-}
-
 function pipinit($EnvName)
 {
     &"$VenvSet/$EnvName/Scripts/Activate.ps1"
