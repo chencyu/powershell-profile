@@ -7,6 +7,9 @@
         [Int]
         $Resolution = 1080,
         [Parameter()]
+        [Int]
+        $FrameRate = 60,
+        [Parameter()]
         [string]
         $Encode = "hevc_nvenc"
     )
@@ -18,8 +21,7 @@
 
     
     # ffmpeg -f gdigrab -i desktop -c:v $Encode -s $W*$H "$VPATH/FFmpegScreenRecord/$NewVideo.mp4"
-    ffmpeg  -f gdigrab -i desktop -c:v $Encode -s $W*$H -framerate 30 `
-        -f alsa -i default -crf 18 "$VPATH/FFmpegScreenRecord/$NewVideo.mp4"
+    ffmpeg -f gdigrab -i desktop -c:v $Encode -s $W*$H -framerate $FrameRate -crf 18 "$VPATH/FFmpegScreenRecord/$NewVideo.mp4"
 }
 
 
