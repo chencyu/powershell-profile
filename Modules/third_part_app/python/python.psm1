@@ -115,34 +115,21 @@ function venv
         Easy way to use venv, for common used.
         簡單使用python -m venv的指令，只適用幾個較普遍的操作。
 
-        ._________________________________________________________.
-        | [Venv - Easy way to use Python venv]                    |
-        |---------------------------------------------------------|
-        |  venv  <operation>        <Py_ver>           <envName>  |
-        |           create       -py <3.7/3.8 ...>       newEnv   |
-        |           upgrade      -py <3.7/3.8 ...>        myEnv   |
-        |           remove                                myEnv   |
-        |            list                                         |
-        |          activate                               myEnv   |
-        |             -h                                          |
-        |  ex.                                                    |
-        |      venv create -py 3.7 newEnvName                     |
-        |      venv remove myEnvName                              |
-        |_________________________________________________________|
-
     .DESCRIPTION
         .
-    .PARAMETER Path
-        The path to the .
-    .PARAMETER LiteralPath
-        Specifies a path to one or more locations. Unlike Path, the value of 
-        LiteralPath is used exactly as it is typed. No characters are interpreted 
-        as wildcards. If the path includes escape characters, enclose it in single
-        quotation marks. Single quotation marks tell Windows PowerShell not to 
-        interpret any characters as escape sequences.
+    .PARAMETER create
+        create a new venv with specified name.
+    .PARAMETER activate
+        activate the specified venv.
+    .PARAMETER list
+        list all venv.
+    .PARAMETER remove
+        remove the specified venv.
     .EXAMPLE
-        C:/PS> 
-        <Description of example>
+        C:/PS> venv -c -py 3.8 newVenv    # Create a new venv with python 3.8
+        C:/PS> venv -a newVenv            # Activate the venv
+        C:/PS> venv -d newVenv            # Delete the venv
+        C:/PS> venv -l                    # List all venv
     .NOTES
         Author: ChenCYu
         Date:   July 09, 2020    
@@ -152,54 +139,38 @@ function venv
     param
     (
         [Parameter(Position = 0)]
-        [Alias("cr")]
+        [Alias("c")]
         [String] $create,
         [Parameter(Position = 0)]
         [Alias("U")]
         [ValidateSet([EnvNames])]
         [String] $upgrade,
         [Parameter(Position = 0)]
-        [Alias("delete", "del", "rm")]
+        [Alias("r")]
         [ValidateSet([EnvNames])]
         [String] $remove,
         [Parameter(Position = 0)]
-        [Alias("ls")]
+        [Alias("l")]
         [Switch] $list = $false,
         [Parameter(Position = 0)]
-        [Alias("act")]
+        [Alias("a")]
         [ValidateSet([EnvNames])]
         [String] $activate,
         [Parameter(Position = 0)]
-        [Alias("help")]
-        [Switch] $h = $false,
+        [Alias("h")]
+        [Switch] $help = $false,
         # [Parameter(Position = 1)]
         # [String] $EnvName,
         [Parameter()]
-        [Alias("Py")]
+        [Alias("py")]
         [String] $PyVer
     )
 
 
-    if ($h)
+    if ($help)
     {
-        Write-Output `
-            ""`
-            " _________________________________________________________"`
-            "| [Venv - Easy way to use Python venv]                    |"`
-            "|---------------------------------------------------------|"`
-            "|  venv  <operation>     <envName>           <Py_ver>     |"`
-            "|          -create        newEnv        -py <3.7/3.8 ...> |"`
-            "|          -upgrade        myEnv        -py <3.7/3.8 ...> |"`
-            "|          -remove         myEnv                          |"`
-            "|           -list                                         |"`
-            "|         -activate        myEnv                          |"`
-            "|             -h                                          |"`
-            "|  ex.                                                    |"`
-            "|      venv create -py 3.7 newEnvName                     |"`
-            "|      venv remove myEnvName                              |"`
-            "|_________________________________________________________|"`
-            ""
-        return
+        Get-Help -Name venv
+        return 0
     }
 
 
