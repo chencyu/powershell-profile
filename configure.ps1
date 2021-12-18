@@ -21,7 +21,7 @@ if (-Not (Get-Command vim))
             "source ~/.vim_runtime/vimrcs/plugins_config.vim"
             "source ~/.vim_runtime/vimrcs/extended.vim"
             "try"
-            "source ~/.vim_runtime/my_configs.vim"
+            "    source ~/.vim_runtime/my_configs.vim"
             "catch"
         ) > "$HOME/.vimrc"
 
