@@ -1,12 +1,12 @@
 ﻿$path_set = @(
-    "C:\Program Files (x86)\Google\Chrome\Application",
+    "${env:ProgramFiles(x86)}\Google\Chrome\Application",
     "$HOME\AppData\Local\Android\Sdk\platform-tools",
-    "C:\Program Files\WinRAR",
-    "C:\Program Files\7-Zip",
-    "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
-    "C:\Program Files (x86)\sox",
-    "C:\Program Files\Vim\vim82",
-    "C:\Program Files\Git\cmd",
+    "${env:ProgramFiles}\WinRAR",
+    "${env:ProgramFiles}\7-Zip",
+    "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
+    "${env:ProgramFiles(x86)}\sox",
+    "${env:ProgramFiles}\Vim\vim82",
+    "${env:ProgramFiles}\Git\cmd",
     "$HOME\.app\mingw-w64\posix\mingw64\bin",
     "$HOME\bin"
 )
