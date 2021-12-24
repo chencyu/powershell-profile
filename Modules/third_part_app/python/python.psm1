@@ -1,7 +1,7 @@
 ﻿
 # Python Environment Variable
 $Env:PYTHONIOENCODING = "utf-8"
-$VenvSet = "$Env:UserProfile/.Envs".Replace("\", "/")
+$VenvSet = "$Env:UserProfile/.venv".Replace("\", "/")
 function jupyterkernel
 {
     [CmdletBinding()]
