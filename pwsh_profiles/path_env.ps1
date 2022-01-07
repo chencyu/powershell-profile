@@ -8,7 +8,7 @@
     "${env:ProgramFiles}\Vim\vim82",
     "${env:ProgramFiles}\Git\cmd",
     "$HOME\.app\mingw-w64\posix\mingw64\bin",
-    "$HOME\bin"
+    "$HOME\.app\bin"
 )
 
 function Add-Path
