@@ -1,4 +1,4 @@
-﻿$BDO = "$Env:GDrive/Game/PC Game/黑色沙漠/.shell"
+﻿$BDO = "$DATA/Game/PC Game/黑色沙漠/.shell"
 
 function 公會招生
 {
