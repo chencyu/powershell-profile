@@ -21,4 +21,9 @@ function 黑洞位置圖
     &"$BDO/黑洞位置圖.jpg"
 }
 
-Export-ModuleMember -Function 公會招生,會長號,東飾品材料,黑洞位置圖
+function 層數
+{
+    Get-Content -Path "$BDO/層數.txt"
+}
+
+Export-ModuleMember -Function 公會招生, 會長號, 東飾品材料, 黑洞位置圖, 層數
