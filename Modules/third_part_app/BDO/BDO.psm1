@@ -26,4 +26,9 @@ function 層數
     Get-Content -Path "$BDO/層數.txt"
 }
 
-Export-ModuleMember -Function 公會招生, 會長號, 東飾品材料, 黑洞位置圖, 層數
+function 面板門檻
+{
+    Get-Content -Path "$BDO/面板門檻.txt"
+}
+
+Export-ModuleMember -Function 公會招生, 會長號, 東飾品材料, 黑洞位置圖, 層數, 面板門檻
