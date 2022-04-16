@@ -3,13 +3,15 @@
     "$HOME\AppData\Local\Android\Sdk\platform-tools",
     "${env:ProgramFiles}\WinRAR",
     "${env:ProgramFiles}\7-Zip",
-    "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
-    "${env:ProgramFiles(x86)}\sox",
-    "${env:ProgramFiles}\Vim\vim82",
-    "${env:ProgramFiles}\Git\cmd",
-    "$HOME\.app\ffmpeg\bin",
-    "$HOME\.app\mingw-w64\posix\mingw64\bin",
-    "$HOME\.app\bin"
+    "$HOME\AppData\Local\Programs\Microsoft VS Code\bin"
+    # "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2019\BuildTools\Common7\Tools",
+    # "${env:ProgramFiles(x86)}\sox",
+    # "${env:ProgramFiles}\Vim\vim82",
+    # "${env:ProgramFiles}\Git\cmd",
+    "$UTILS\ffmpeg\bin",
+    "$UTILS\mingw-w64\posix\mingw64\bin",
+    "$UTILS\Git\cmd"
+    "$UTILS\bin"
 )
 
 function Add-Path

@@ -52,7 +52,7 @@ function Cut-Video
     $EndTime = [System.DateTime]$End
     $DiffTime = $EndTime.Subtract($StartTime)
     
-    ffmpeg -ss "$Start" -i $InputFile -t "$DiffTime" -avoid_negative_ts make_zero -c copy "$OutFile"
+    ffmpeg -ss "$Start" -i "$InputFile" -t "$DiffTime" -avoid_negative_ts make_zero -c copy "$OutFile"
 }
 
 
