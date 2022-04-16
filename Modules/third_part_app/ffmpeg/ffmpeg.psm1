@@ -103,5 +103,5 @@ function Update-FFmpeg
 }
 
 # This must be end of modules
-Export-ModuleMember -Variable *
-Export-ModuleMember -Function *
+# Export-ModuleMember -Variable *
+# Export-ModuleMember -Function *
