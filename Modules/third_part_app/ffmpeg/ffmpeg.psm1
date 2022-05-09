@@ -92,6 +92,28 @@ function Cat-Video
 }
 
 
+function Interpolate-Video
+{
+    [CmdletBinding()]
+    param
+    (
+        [Alias("i")]
+        [Parameter(Mandatory)]
+        [string]
+        $InputFile,
+        [Alias("r")]
+        [Int]
+        $FPS = 60,
+        [Alias("o")]
+        [Parameter(Mandatory)]
+        [string]
+        $OutFile
+    )
+
+    ffmpeg -hwaccel auto -i "$InputFile" -filter:v tblend=all_mode=interpolate -r $FPS "$OutFile"
+}
+
+
 function Update-FFmpeg
 {
     $OldProgressPreference = $ProgressPreference
