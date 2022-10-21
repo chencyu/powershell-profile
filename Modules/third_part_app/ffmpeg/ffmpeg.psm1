@@ -104,17 +104,17 @@ function Convert-Video
         [string]
         $OutFile,
         [Parameter()]
-        [ValidateSet("hq","ll")]
+        [ValidateSet("hq", "ll")]
         [string]
         $Tune = "hq"
-
-        switch ($Tune)
-        {
-            "hq" { ffmpeg -hwaccel nvdec -i "${InputFile}" -c:v hevc_nvenc -preset p7 -tune hq  -tier 1 -rc vbr -pix_fmt yuv420p -cq 1  -vtag hvc1 -c:a copy "${$OutFile}"  -y }
-            "ll" { ffmpeg -hwaccel nvdec -i "${InputFile}" -c:v hevc_nvenc -preset p1 -tune ull -tier 1 -rc vbr -pix_fmt yuv420p -cq 35 -vtag hvc1 -c:a copy "${$OutFile}"  -y } 
-            Default {}
-        }
     )
+
+    switch ($Tune)
+    {
+        "hq" { ffmpeg -hwaccel nvdec -i "${InputFile}" -c:v hevc_nvenc -preset p7 -tune hq  -tier 1 -rc vbr -pix_fmt yuv420p -cq 1  -vtag hvc1 -c:a copy "${OutFile}"  -y }
+        "ll" { ffmpeg -hwaccel nvdec -i "${InputFile}" -c:v hevc_nvenc -preset p1 -tune ull -tier 1 -rc vbr -pix_fmt yuv420p -cq 35 -vtag hvc1 -c:a copy "${OutFile}"  -y } 
+        Default {}
+    }
 }
 
 
