@@ -9,7 +9,8 @@
     # "${env:ProgramFiles}\Vim\vim82",
     # "${env:ProgramFiles}\Git\cmd",
     "$UTILS\ffmpeg\bin",
-    "$UTILS\mingw-w64\posix\mingw64\bin",
+    "$UTILS\youtube-dl\bin",
+    "$UTILS\mingw64\bin", #https://winlibs.com/#download-release
     "$UTILS\Git\cmd"
     "$UTILS\bin"
 )
