@@ -1,0 +1,563 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WinGet.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WinGet.Client.Commands.FindPackageCommand">
+            <summary>
+            Searches configured sources for packages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.FindPackageCommand.ProcessRecord">
+            <summary>
+            Searches for configured sources for packages.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Commands.GetPackageCommand">
+            <summary>
+            Searches configured sources for packages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.GetPackageCommand.ProcessRecord">
+            <summary>
+            Searches for configured sources for packages.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Commands.GetSourceCommand">
+            <summary>
+            Retrieves the list of configured sources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Commands.GetSourceCommand.Name">
+            <summary>
+            Gets or sets the name of the source to retrieve.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.GetSourceCommand.ProcessRecord">
+            <summary>
+            Returns the list of configured sources.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Commands.InstallPackageCommand">
+            <summary>
+            Installs a package from the pipeline or from a configured source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Commands.InstallPackageCommand.Scope">
+            <summary>
+            Gets or sets the scope to install the application under.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Commands.InstallPackageCommand.Architecture">
+            <summary>
+            Gets or sets the architecture of the application to be installed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.InstallPackageCommand.BeginProcessing">
+            <summary>
+            Prepares the command to install a package.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.InstallPackageCommand.ProcessRecord">
+            <summary>
+            Installs a package from the pipeline or from a configured source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.InstallPackageCommand.GetInstallOptions(Microsoft.Management.Deployment.PackageVersionId)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Commands.UninstallPackageCommand">
+            <summary>
+            Uninstalls a package from the local system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Commands.UninstallPackageCommand.Mode">
+            <summary>
+            Gets or sets the desired mode for the uninstallation process.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Commands.UninstallPackageCommand.Force">
+            <summary>
+            Gets or sets a value indicating whether to continue upon non security related failures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.UninstallPackageCommand.ProcessRecord">
+            <summary>
+            Uninstalls a package from the local system.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Commands.UpdatePackageCommand">
+            <summary>
+            This commands updates a package from the pipeline or from the local system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Commands.UpdatePackageCommand.IncludeUnknown">
+            <summary>
+            Gets or sets a value indicating whether updating to an unknown version is allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.UpdatePackageCommand.ProcessRecord">
+            <summary>
+            Updates a package from the pipeline or from the local system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Commands.UpdatePackageCommand.GetInstallOptions(Microsoft.Management.Deployment.PackageVersionId)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.BaseClientCommand">
+            <summary>
+            This is the base class for all of the commands in this module.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseClientCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.Client.Common.BaseClientCommand"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseClientCommand.ComObjectFactory">
+            <summary>
+            Gets the instance of the <see cref="P:Microsoft.WinGet.Client.Common.BaseClientCommand.ComObjectFactory" /> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseClientCommand.PackageManager">
+            <summary>
+            Gets the instance of the <see cref="P:Microsoft.WinGet.Client.Common.BaseClientCommand.PackageManager" /> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseClientCommand.GetPackageCatalogReferences(System.String)">
+            <summary>
+            Retrieves the specified source or all sources if <paramref name="source" /> is null.
+            </summary>
+            <returns>A list of <see cref="T:Microsoft.Management.Deployment.PackageCatalogReference" /> instances.</returns>
+            <param name="source">The name of the source to retrieve. If null, then all sources are returned.</param>
+            <exception cref="T:System.ArgumentException">The source does not exist.</exception>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.BaseFinderCommand">
+            <summary>
+            This is the base class for all commands that might need to search for a package. It contains an initial
+            set of parameters that corresponds to the intersection of i.e., the "install" and "search" commands.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderCommand.Id">
+            <summary>
+            Gets or sets the field that is matched against the identifier of a package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderCommand.Name">
+            <summary>
+            Gets or sets the field that is matched against the name of a package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderCommand.Moniker">
+            <summary>
+            Gets or sets the field that is matched against the name of a package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderCommand.Source">
+            <summary>
+            Gets or sets the name of the source to search for packages. If null, then all sources are searched.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderCommand.Query">
+            <summary>
+            Gets or sets the strings that match against every field of a package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderCommand.Exact">
+            <summary>
+            Gets or sets a value indicating whether to match exactly against package fields.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseFinderCommand.GetExactAsMatchOption">
+            <summary>
+            Returns a <see cref="T:Microsoft.Management.Deployment.PackageFieldMatchOption" /> based on a parameter.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.PackageFieldMatchOption" /> value.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseFinderCommand.FindPackages(Microsoft.Management.Deployment.CompositeSearchBehavior,System.UInt32)">
+            <summary>
+            Searches for packages based on the configured parameters.
+            </summary>
+            <param name="behavior">The <see cref="T:Microsoft.Management.Deployment.CompositeSearchBehavior" /> value.</param>
+            <param name="limit">The limit on the number of matches returned.</param>
+            <returns>A list of <see cref="T:Microsoft.Management.Deployment.MatchResult" /> objects.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.BaseFinderExtendedCommand">
+            <summary>
+            This is the base class for the commands whose sole purpose is to filter a list of packages i.e.,
+            the "search" and "list" commands. This class contains an extended set of parameters suited for
+            that purpose.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderExtendedCommand.Tag">
+            <summary>
+            Gets or sets the filter that is matched against the tags of the package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderExtendedCommand.Command">
+            <summary>
+            Gets or sets the filter that is matched against the commands of the package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseFinderExtendedCommand.Count">
+            <summary>
+            Gets or sets the maximum number of results returned.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseFinderExtendedCommand.FindPackages(Microsoft.Management.Deployment.CompositeSearchBehavior)">
+            <summary>
+            Searches for packages from configured sources.
+            </summary>
+            <param name="behavior">A <see cref="T:Microsoft.Management.Deployment.CompositeSearchBehavior" /> value.</param>
+            <returns>A list of <see cref="T:Microsoft.Management.Deployment.MatchResult" /> objects.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.BaseInstallCommand">
+            <summary>
+            This is the base class for all commands that parse a <see cref="T:Microsoft.Management.Deployment.FindPackagesOptions" /> result
+            from the provided parameters i.e., the "install" and "upgrade" commands.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseInstallCommand.Mode">
+            <summary>
+            Gets or sets the mode to manipulate the package with.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseInstallCommand.Override">
+            <summary>
+            Gets or sets the override arguments to be passed on to the installer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseInstallCommand.Location">
+            <summary>
+            Gets or sets the installation location.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseInstallCommand.AllowHashMismatch">
+            <summary>
+            Gets or sets a value indicating whether to skip the installer hash validation check.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseInstallCommand.Force">
+            <summary>
+            Gets or sets a value indicating whether to continue upon non security related failures.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BaseInstallCommand.Header">
+            <summary>
+            Gets or sets the optional HTTP Header to pass on to the REST Source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseInstallCommand.GetInstallOptions(Microsoft.Management.Deployment.PackageVersionId)">
+            <summary>
+            Gets the install options from the configured parameters.
+            </summary>
+            <param name="version">The <see cref="T:Microsoft.Management.Deployment.PackageVersionId" /> to install.</param>
+            <returns>An <see cref="T:Microsoft.Management.Deployment.InstallOptions" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BaseInstallCommand.RegisterCallbacksAndWait(Windows.Foundation.IAsyncOperationWithProgress{Microsoft.Management.Deployment.InstallResult,Microsoft.Management.Deployment.InstallProgress},System.String)">
+            <summary>
+            Registers callbacks on an asynchronous operation and waits for the results.
+            </summary>
+            <param name="operation">The asynchronous operation.</param>
+            <param name="activity">A <see cref="T:System.String" /> instance.</param>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.InstallResult" /> instance.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.BasePackageCommand">
+            <summary>
+            This is the base class for commands which operate on a specific package and version i.e.,
+            the "install", "uninstall", and "upgrade" commands.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BasePackageCommand.CatalogPackage">
+            <summary>
+            Gets or sets the package to directly install.
+            </summary>
+            <remarks>
+            Must match the name of the <see cref="P:Microsoft.WinGet.Client.Common.BasePackageCommand.CatalogPackage" /> field on the <see cref="T:Microsoft.Management.Deployment.MatchResult" /> class.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BasePackageCommand.Version">
+            <summary>
+            Gets or sets the version to install.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.BasePackageCommand.Log">
+            <summary>
+            Gets or sets the path to the logging file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BasePackageCommand.GetExactAsMatchOption">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Common.BasePackageCommand.GetPackageAndExecute(Microsoft.Management.Deployment.CompositeSearchBehavior,System.Action{Microsoft.Management.Deployment.CatalogPackage,Microsoft.Management.Deployment.PackageVersionId})">
+            <summary>
+            Executes a command targeting a specific package version.
+            </summary>
+            <param name="behavior">The <see cref="T:Microsoft.Management.Deployment.CompositeSearchBehavior" /> value.</param>
+            <param name="callback">The method to call after retrieving the package and version to operate upon.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.Constants">
+            <summary>
+            This class contains all of the configurable constants for this project.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.Constants.PackageNoun">
+            <summary>
+            The noun analogue of the <see cref="T:Microsoft.Management.Deployment.CatalogPackage" /> class. Changing this will alter the names of the related commands.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.Constants.SourceNoun">
+            <summary>
+            The noun analogue of the <see cref="T:Microsoft.Management.Deployment.PackageCatalogReference" /> class. Changing this will alter the names of the related commands.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.Constants.CountLowerBound">
+            <summary>
+            If a command allows the specification of the maximum number of results to return, this is the lower bound for that value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.Constants.CountUpperBound">
+            <summary>
+            If a command allows the specification of the maximum number of results to return, this is the upper bound for that value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.Constants.GivenSet">
+            <summary>
+            This parameter set indicates that a package was provided via a parameter or the pipeline and it can be acted on directly.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.Constants.FoundSet">
+            <summary>
+            This parameter set indicates that a package was not provided via a parameter or the pipeline and it
+            needs to be found by searching a package source.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.ErrorCode">
+            <summary>
+            Error code constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.Client.Common.ErrorCode.FileNotFound">
+            <summary>
+            Error code for ERROR_FILE_NOT_FOUND.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Common.Utilities">
+            <summary>
+            This class contains various helper methods for this project.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.Utilities.ResourceManager">
+            <summary>
+            Gets the <see cref="P:Microsoft.WinGet.Client.Common.Utilities.ResourceManager" /> instance for the executing assembly.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.Utilities.ExecutingAsAdministrator">
+            <summary>
+            Gets a value indicating whether the current assembly is executing in an administrative context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Common.Utilities.ExecutingAsSystem">
+            <summary>
+            Gets a value indicating whether the current assembly is executing as a SYSTEM user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Errors.FindPackagesException">
+            <summary>
+            Raised when there is an error searching for packages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Errors.FindPackagesException.#ctor(Microsoft.Management.Deployment.FindPackagesResultStatus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.Client.Errors.FindPackagesException"/> class.
+            </summary>
+            <param name="status">A <see cref="T:Microsoft.Management.Deployment.FindPackagesResultStatus" /> value.</param>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Errors.FindPackagesException.Status">
+            <summary>
+            Gets or sets the error status.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Errors.VagueCriteriaException">
+            <summary>
+            Raised when search criteria for installing or updating a package is too vague.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Errors.VagueCriteriaException.#ctor(System.Collections.Generic.IReadOnlyList{Microsoft.Management.Deployment.MatchResult})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.Client.Errors.VagueCriteriaException"/> class.
+            </summary>
+            <param name="results">The list of conflicting packages of length at least two.</param>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Errors.VagueCriteriaException.MatchResults">
+            <summary>
+            Gets or sets the list of conflicting packages.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Factories.ComObjectFactory">
+            <summary>
+            Constructs instances of classes from the <see cref="N:Microsoft.Management.Deployment" /> namespace.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Factories.ComObjectFactory.CreatePackageManager">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Management.Deployment.PackageManager" /> class.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.PackageManager" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Factories.ComObjectFactory.CreateFindPackagesOptions">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Management.Deployment.FindPackagesOptions" /> class.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.FindPackagesOptions" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Factories.ComObjectFactory.CreateCreateCompositePackageCatalogOptions">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Management.Deployment.CreateCompositePackageCatalogOptions" /> class.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.CreateCompositePackageCatalogOptions" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Factories.ComObjectFactory.CreateInstallOptions">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Management.Deployment.InstallOptions" /> class.
+            </summary>
+            <returns>An <see cref="T:Microsoft.Management.Deployment.InstallOptions" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Factories.ComObjectFactory.CreateUninstallOptions">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Management.Deployment.UninstallOptions" /> class.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.UninstallOptions" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Factories.ComObjectFactory.CreatePackageMatchFilter">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Management.Deployment.PackageMatchFilter" /> class.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Management.Deployment.PackageMatchFilter" /> instance.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Attributes.FilterAttribute">
+            <summary>
+            A <see cref="T:Microsoft.Management.Deployment.FindPackagesOptions" /> is constructed by introspecting on the inheritance tree and
+            looking for parameters that are marked with this attribute. Properties that are marked with this
+            attribute are added to the <see cref="T:Microsoft.Management.Deployment.FindPackagesOptions" /> object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Attributes.FilterAttribute.Field">
+            <summary>
+            Gets or sets the field that the filter will be matching against.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Helpers.WriteProgressAdapter">
+            <summary>
+            Marshals calls to <see cref="M:System.Management.Automation.Cmdlet.WriteProgress(System.Management.Automation.ProgressRecord)" /> back to the main thread.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Helpers.WriteProgressAdapter.#ctor(System.Management.Automation.Cmdlet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.Client.Helpers.WriteProgressAdapter" /> class.
+            </summary>
+            <param name="cmdlet">A <see cref="T:System.Management.Automation.Cmdlet" /> instance.</param>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Helpers.WriteProgressAdapter.Completed">
+            <summary>
+            Sets a value indicating whether the asynchronous operation is finished and the main thread can continue.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Helpers.WriteProgressAdapter.Wait">
+            <summary>
+            This should be called on the main thread to wait for the asynchronous operation to complete.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.Client.Helpers.WriteProgressAdapter.WriteProgress(System.Management.Automation.ProgressRecord)">
+            <summary>
+            This is an analogue of the <see cref="M:System.Management.Automation.Cmdlet.WriteProgress(System.Management.Automation.ProgressRecord)" /> function.
+            </summary>
+            <param name="record">A <see cref="T:System.Management.Automation.ProgressRecord" /> instance.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.Client.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.ArgumentExceptionInvalidSource">
+            <summary>
+              Looks up a localized string similar to No source matches the given value: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.ExceptionSystemDisabled">
+            <summary>
+              Looks up a localized string similar to This cmdlet is currently disabled for SYSTEM..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.FindPackagesExceptionMessage">
+            <summary>
+              Looks up a localized string similar to An error occurred while searching for packages: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.ProgressRecordActivityInstalling">
+            <summary>
+              Looks up a localized string similar to Installing &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.ProgressRecordActivityUninstalling">
+            <summary>
+              Looks up a localized string similar to Uninstalling &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.ProgressRecordActivityUpdating">
+            <summary>
+              Looks up a localized string similar to Updating &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.RuntimeExceptionCatalogError">
+            <summary>
+              Looks up a localized string similar to An error occurred while connecting to the catalog..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.RuntimeExceptionInvalidVersion">
+            <summary>
+              Looks up a localized string similar to No versions matched the given value: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.RuntimeExceptionNoPackagesFound">
+            <summary>
+              Looks up a localized string similar to No packages matched the given input criteria..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.VagueCriteriaExceptionMessage">
+            <summary>
+              Looks up a localized string similar to {0}, {1}, and {2} other packages matched the input criteria. Please refine the input..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.Client.Properties.Resources.WinGetPackageNotInstalled">
+            <summary>
+              Looks up a localized string similar to Unable to execute command; WinGet package not installed..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Management.Deployment.CatalogPackageExtensions">
+            <summary>
+            Extensions for the <see cref="T:Microsoft.Management.Deployment.CatalogPackage" /> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Management.Deployment.CatalogPackageExtensions.ToString(Microsoft.Management.Deployment.CatalogPackage,Microsoft.Management.Deployment.PackageVersionId)">
+            <summary>
+            Converts a <see cref="T:Microsoft.Management.Deployment.CatalogPackage" /> to a string previewing the specified version.
+            </summary>
+            <param name="package">A <see cref="T:Microsoft.Management.Deployment.CatalogPackage" /> instance.</param>
+            <param name="version">A <see cref="T:Microsoft.Management.Deployment.PackageVersionId" /> instance. If null, the latest available version is used.</param>
+            <returns>A <see cref="T:System.String" /> instance.</returns>
+        </member>
+    </members>
+</doc>

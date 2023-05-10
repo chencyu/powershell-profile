@@ -8,10 +8,12 @@
     # "${env:ProgramFiles(x86)}\sox",
     # "${env:ProgramFiles}\Vim\vim82",
     # "${env:ProgramFiles}\Git\cmd",
+    "$LOCALAPPDATA\Programs\Python\Launcher",
     "$UTILS\ffmpeg\bin",
     "$UTILS\youtube-dl\bin",
     "$UTILS\mingw64\bin", #https://winlibs.com/#download-release
-    "$UTILS\Git\cmd"
+    "$UTILS\Git\cmd",
+    "$UTILS\Sync"
     "$UTILS\bin"
 )
 
@@ -45,4 +47,7 @@ if (-Not $_ORIGINAL_PATH)
     
     # 加入當前路徑使當前資料夾下的執行檔可以直接執行
     Add-Path -NewPath "."
+
+    # 移除SVP4PRO自己設定的PATH
+    $env:PYTHONPATH = ""
 }
