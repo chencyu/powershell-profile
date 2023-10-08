@@ -12,7 +12,7 @@
     "$UTILS\ffmpeg\bin",
     "$UTILS\yt-dlp",
     "$UTILS\mingw64\bin", #https://winlibs.com/#download-release
-    "$UTILS\Git\cmd",
+    "$UTILS\Git\bin",
     "$UTILS\Sync",
     "$UTILS\iperf",
     "$UTILS\adb",
