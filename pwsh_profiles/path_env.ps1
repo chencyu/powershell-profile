@@ -10,10 +10,12 @@
     # "${env:ProgramFiles}\Git\cmd",
     "$LOCALAPPDATA\Programs\Python\Launcher",
     "$UTILS\ffmpeg\bin",
-    "$UTILS\youtube-dl\bin",
+    "$UTILS\yt-dlp",
     "$UTILS\mingw64\bin", #https://winlibs.com/#download-release
     "$UTILS\Git\cmd",
-    "$UTILS\Sync"
+    "$UTILS\Sync",
+    "$UTILS\iperf",
+    "$UTILS\adb",
     "$UTILS\bin"
 )
 
